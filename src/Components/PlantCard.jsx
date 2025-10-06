@@ -6,7 +6,7 @@ const PlantCard = ({ plant }) => {
 
   const { name, image, price, category, id } = plant;
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
+    <div className="card bg-base-100  shadow-sm">
       <figure className="h-50 overflow-hidden">
         <img className="w-full h-full object-cover" src={image} alt="tree" />
       </figure>
@@ -15,7 +15,11 @@ const PlantCard = ({ plant }) => {
         <p>Category: {category}</p>
         <p>Price: {price}$</p>
         <div className="card-actions justify-end">
-          <Link to={`/plant-details/${id}`} className="btn btn-primary">
+          <Link
+            state={plant}
+            to={`/plant-details/${id}`}
+            className="btn btn-primary"
+          >
             View Details
           </Link>
         </div>

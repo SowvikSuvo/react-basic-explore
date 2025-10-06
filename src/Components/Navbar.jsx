@@ -1,7 +1,12 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import ThemeToggle from "./ThemeToggle";
+import { ShoppingCart } from "lucide-react";
+import { CartContext } from "./Layouts/RootLayout";
 
 const Navbar = () => {
+  const { cart, setCart } = use(CartContext);
+
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -59,10 +64,18 @@ const Navbar = () => {
           <li>
             <Link to="/about">About</Link>
           </li>
+          <li>
+            <Link to="/cart" className="relative">
+              <div>
+                <ShoppingCart></ShoppingCart>
+                <p className="absolute -top-1 -right-1">{cart.length}</p>
+              </div>
+            </Link>
+          </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <ThemeToggle></ThemeToggle>
       </div>
     </div>
   );

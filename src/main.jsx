@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router";
@@ -7,11 +7,15 @@ import About from "./Components/Pages/About.jsx";
 import Home from "./Components/Pages/Home.jsx";
 import RootLayout from "./Components/Layouts/RootLayout.jsx";
 import PlantDetails from "./Components/Pages/PlantDetails.jsx";
+import axios from "axios";
+import LoadingSpinner from "./Components/LoadingSpinner.jsx";
+import Cart from "./Components/Pages/Cart.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
+    hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>,
     children: [
       {
         index: true,
@@ -33,6 +37,12 @@ const router = createBrowserRouter([
       {
         path: "/plant-details/:id",
         Component: PlantDetails,
+        loader: ({ params }) =>
+          axios(`https://openapi.programming-hero.com/api/plant/${params.id}`),
+      },
+      {
+        path: "/cart",
+        Component: Cart,
       },
     ],
   },
