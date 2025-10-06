@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import ThemeToggle from "./ThemeToggle";
 import { ShoppingCart } from "lucide-react";
 import { CartContext } from "./Layouts/RootLayout";
@@ -56,13 +56,34 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to="/">Home</Link>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "bg-orange-500 rounded-lg" : ""
+              }
+              to="/"
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "bg-orange-500 rounded-lg" : ""
+              }
+              to="/contact"
+            >
+              Contact
+            </NavLink>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "bg-orange-500 rounded-lg" : ""
+              }
+              to="/about"
+            >
+              About
+            </NavLink>
           </li>
           <li>
             <Link to="/cart" className="relative">

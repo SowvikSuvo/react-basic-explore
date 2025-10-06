@@ -8,7 +8,7 @@ const Cart = () => {
       {cart.map((plant) => (
         <>
           <div key={plant.id} className="py-2">
-            <div className="flex  gap-5 items-center p-2 bg-amber-500 rounded-2xl w-150 ">
+            <div className="flex  gap-5 items-center p-2 bg-purple-500 shadow-md rounded-2xl w-150 ">
               <img
                 className="w-[80px] h-[60px] rounded-xl"
                 src={plant.image}
